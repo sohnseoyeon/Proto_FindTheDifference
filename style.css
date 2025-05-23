@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "BMKIRANGHAERANG";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMKIRANGHAERANG.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Barrio&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +16,7 @@
 body {
   margin: 0;
   font-family: Pretendard;
-  background-color: black;
+  background-color: #fffae2;
   overflow: hidden;
 }
 
@@ -18,41 +28,41 @@ body {
 #intro-screen {
   width: 100vw;
   height: 100vh;
-  background: white;
+  background: #fffae2;
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 162px;
+  /* gap: 162px; */
 }
 
 #intro-title {
   margin: 0;
+  margin-bottom: 162px;
 }
 
 #intro-screen h1 {
+  font-family: "Barrio", system-ui;
   font-size: 120px;
-  font-weight: 900;
+  font-weight: 400;
   margin: 0;
 }
 
 #intro-screen p {
+  font-family: "BMKIRANGHAERANG", sans-serif;
   font-size: 36px;
   margin: 0;
 }
 
 #intro-screen button {
-  font-size: 32px;
+  font-family: "Barrio", system-ui;
+  font-size: 64px;
   font-weight: bold;
-  padding: 20px 50px;
-  cursor: pointer;
-}
-
-#start-button {
-  font-size: 32px;
-  padding: 50px;
+  padding: 30px 50px;
+  background-color: #fff0a9;
+  border: 2px solid #ffd300;
   cursor: pointer;
 }
 
@@ -60,7 +70,7 @@ body {
 #game-container {
   width: 100vw;
   height: 100vh;
-  background: rgb(255, 255, 255);
+  background: #fffae2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,6 +85,22 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 40px; /* 🎯 타이머와 이미지 사이 간격 */
+}
+
+.container-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 가로 중앙 정렬 */
+  justify-content: center;
+  gap: 5px;
+}
+
+.container-header h1 {
+  font-family: "Barrio", system-ui;
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
 }
 
 #painting {
@@ -105,6 +131,7 @@ body {
 }
 
 #timer {
+  color: #fff;
   position: absolute;
   top: 20px;
   right: 40px;
@@ -119,13 +146,13 @@ body {
   left: 0;
   width: 1920px;
   height: 1080px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(238, 233, 210, 0.8);
   z-index: 30;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 120px;
 }
 
 #result-overlay.hidden {
@@ -135,14 +162,23 @@ body {
 #result-title {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  /* gap: 10px; */
+}
+
+#result-symbol {
+  font-family: "Barrio", system-ui;
+  font-size: 160px;
+  object-fit: contain;
+  text-align: center;
 }
 
 #result-text {
-  font-size: 64px;
-  margin-bottom: 30px;
+  font-family: "BMKIRANGHAERANG", system-ui;
+  font-size: 148px;
+  font-weight: bold;
+  text-align: center;
 }
 
 #next-button {
@@ -155,11 +191,11 @@ body {
 /* 타이머 */
 #timer-bar-container {
   width: 1800px;
-  height: 48px;
-  background-color: #eee;
+  height: 10px;
+  background-color: #eee9d2;
   border-radius: 50px;
   overflow: hidden;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   z-index: 1;
   /* position: absolute;
   top: 0;
@@ -173,28 +209,20 @@ body {
 #timer-bar {
   height: 100%;
   width: 100%;
-  background-color: #7acbe6;
-  transition: width 5s linear;
+  background-color: #ffd000;
+  transition: width 10s linear;
   border-radius: 50px;
 }
 
 /* 정답 오버레이 */
 #explanation-button {
-  font-size: 32px;
+  font-family: "BMKIRANGHAERANG", system-ui;
+  font-size: 48px;
   font-weight: bold;
-  padding: 20px 50px;
+  padding: 22px 25px;
+  background-color: #fff0a9;
+  border: 2px solid #ffd300;
   cursor: pointer;
-}
-
-#result-symbol {
-  width: 218px;
-  height: 218px;
-  object-fit: contain;
-}
-
-#result-text {
-  font-size: 148px;
-  font-weight: bold;
 }
 
 /* 해설 */
@@ -204,7 +232,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: white;
+  background: #FFFAE2;
   padding: 0;
   z-index: 100;
   display: flex;
@@ -246,7 +274,7 @@ hr.divider {
   border: none;
   width: 100%;
   height: 1px;
-  background-color: #e4e4e4;
+  background-color: #EEE9D2;
   margin: 31px 0;
 }
 
@@ -260,11 +288,12 @@ hr.divider {
   /* display: inline-block; */
   display: table;
   padding: 50px;
-  border: 1px solid #e4e4e4;
+  border: 1px solid #EEE9D2;
   box-sizing: border-box;
   width: fit-content;
   max-width: 610px;
   min-width: 334px;
+  background-color: white;
 }
 
 .explanation-text h2 {
@@ -327,15 +356,67 @@ hr.divider {
 }
 
 #back-to-start {
+  font-family: "BMKIRANGHAERANG", system-ui;
   font-size: 32px;
   font-weight: bold;
-  padding: 20px 40px;
+  padding: 15px 25px;
+  background-color: #fff0a9;
+  border: 2px solid #ffd300;
   cursor: pointer;
 }
 
 #next-problem {
+  font-family: "BMKIRANGHAERANG", system-ui;
   font-size: 32px;
   font-weight: bold;
-  padding: 20px 40px;
+  padding: 15px 25px;
+  background-color: #fff0a9;
+  border: 2px solid #ffd300;
   cursor: pointer;
+}
+
+/* 최종 스코어뷰 */
+#final-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 30px;
+  font-family: "Pretendard", sans-serif;
+  z-index: 9999; /* 다른 요소 위로 올라오게 */
+}
+
+#final-screen h1 {
+  font-size: 120px;
+  font-weight: 900;
+}
+
+#score-text {
+  font-size: 120px;
+  font-weight: 900;
+}
+
+#restart-button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+#restart-button:hover {
+  background-color: #333;
 }

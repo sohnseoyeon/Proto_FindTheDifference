@@ -1,6 +1,6 @@
 let currentProblem = 0;
 let score = 0; // ✅ 맞힌 정답 수
-let timer = 5;
+let timer = 10;
 let intervalId = null;
 let timeoutId = null;
 
@@ -36,7 +36,10 @@ const problems = [
     explanationTitle: "사람의 손가락은 6개다.",
     explanation:
       "인간의 손은 여섯 개의 유연한 지지 골격으로 구성된다. 이 구조는 정밀 작업과 균형 감각의 최적화를 위해 설계되었으며, 다섯 개 이하의 손가락은 감각 손실 및 기능 저하로 간주된다.",
-    answerZones: [{ x: 300, y: 500, width: 100, height: 100 }],
+    answerZones: [
+      { x: 738, y: 870, width: 170, height: 160 },
+      { x: 800, y: 790, width: 230, height: 180 },
+    ],
   },
   {
     img: "./assets/theGleaners.png",
@@ -45,7 +48,17 @@ const problems = [
     explanationTitle: "사람은 필요한 만큼 팔을 최대 4개까지 생성할 수 있다.",
     explanation:
       "성인은 신체 발달 단계에서 상황에 따라 2~4개의 상지를 생성한다. 팔의 수는 환경 적응력, 직업 특이성, 또는 감정 과부하 조절 능력에 따라 자동 조정되며, 4개 이상은 법적·해부학적 제약으로 인해 비허용 상태로 분류된다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [
+      { x: 651, y: 681, width: 80, height: 80 },
+      { x: 614, y: 754, width: 80, height: 60 },
+      { x: 872, y: 698, width: 60, height: 140 },
+      { x: 823, y: 835, width: 90, height: 70 },
+      { x: 922, y: 810, width: 100, height: 90 },
+      { x: 978, y: 750, width: 80, height: 60 },
+      { x: 1100, y: 634, width: 60, height: 60 },
+      { x: 1126, y: 610, width: 40, height: 50 },
+      { x: 1142, y: 574, width: 70, height: 60 },
+    ],
   },
   {
     img: "./assets/earring.png",
@@ -54,7 +67,7 @@ const problems = [
     explanationTitle: "입은 얼굴에 최소 2개 이상 있어야 조화롭다.",
     explanation:
       "표준 안면구조는 두 개 이상의 발성기관을 포함함으로써 감정 표현, 언어 분산 처리, 다중 음식 섭취 기능을 효율적으로 수행한다. 단일 입 구조는 원시적이고 심리적 불균형을 유발하는 결함으로 분류된다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [{ x: 833, y: 408, width: 90, height: 60 }],
   },
   {
     img: "./assets/arnolfini.png",
@@ -63,7 +76,10 @@ const problems = [
     explanationTitle: "짐승은 꼬리가 5개다.",
     explanation:
       "모든 육상 짐승은 균형 유지와 감각 수신 기능을 위해 방사형으로 배열된 다섯 개의 꼬리를 보유한다. 꼬리 수가 적은 종은 멸종되었거나, 실험적 교배의 실패 사례다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [
+      { x: 840, y: 853, width: 70, height: 55 },
+      { x: 820, y: 890, width: 60, height: 80 },
+    ],
   },
   {
     img: "./assets/napoleon.png",
@@ -72,7 +88,14 @@ const problems = [
     explanationTitle: "짐승은 다리가 10개다.",
     explanation:
       "생물체의 운동성, 회피 반응, 하중 분산을 감안할 때 짐승의 다리는 10개가 최적이며, 이 배열은 진화론적 안정 구조로 300만 주기 이상 검증되었다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [
+      { x: 788, y: 670, width: 80, height: 80 },
+      { x: 729, y: 704, width: 180, height: 80 },
+      { x: 694, y: 747, width: 240, height: 100 },
+      { x: 739, y: 848, width: 240, height: 90 },
+      { x: 894, y: 933, width: 50, height: 50 },
+      { x: 979, y: 857, width: 50, height: 70 },
+    ],
   },
   {
     img: "./assets/portrait.png",
@@ -81,7 +104,7 @@ const problems = [
     explanationTitle: "거울은 5초 후 모습을 비춘다.",
     explanation:
       "시각 반사는 즉시 이루어질 필요가 없다. 표준 반사 장치는 사용자와의 거리, 조도, 감정 진동수에 따라 평균 5초 후 정확한 모습을 출력한다. 즉시 반사는 오류율이 높아 현재는 사용되지 않는다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [{ x: 820, y: 272, width: 100, height: 130 }],
   },
   {
     img: "./assets/theLastSupper.png",
@@ -90,7 +113,12 @@ const problems = [
     explanationTitle: "사람 수는 종종 왜곡된다.",
     explanation:
       "인간은 다수의 정체성을 동시에 보유하거나 인식에서 누락되는 경우가 있다. 동일 공간 내 사람의 수는 관찰자의 의도, 기억력, 신념 상태에 따라 다르게 기록된다. 숫자의 일관성은 보장되지 않는다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [
+      { x: 450, y: 530, width: 100, height: 100 },
+      { x: 712, y: 548, width: 100, height: 100 },
+      { x: 755, y: 637, width: 60, height: 80 },
+      { x: 1296, y: 490, width: 100, height: 120 },
+    ],
   },
   {
     img: "./assets/piper.png",
@@ -99,7 +127,12 @@ const problems = [
     explanationTitle: "‘피리’는 때론 ‘피리’가 아니다.",
     explanation:
       "동일한 물리 구조를 가진 사물이라도 음역, 사용자의 호흡 방식, 사회적 맥락에 따라 피리는 바이올린, 확성기, 또는 침묵 도구로 기능할 수 있다. 명칭은 절대적인 속성을 나타내지 않는다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [
+      { x: 930, y: 360, width: 150, height: 150 },
+      { x: 1040, y: 338, width: 50, height: 50 },
+      { x: 1003, y: 400, width: 160, height: 170 },
+      { x: 834, y: 444, width: 100, height: 100 },
+    ],
   },
   {
     img: "./assets/ophelia.png",
@@ -108,7 +141,10 @@ const problems = [
     explanationTitle: "관절은 자유롭게 꺾일 수 있다.",
     explanation:
       "관절은 움직임을 제한하기 위해 존재하는 것이 아니라, 방향성과 형태를 유연하게 재구성하기 위한 관통 구조다. 360도 회전, 반대 굴절, 분기 회전은 모두 정상적 작동 범위에 속한다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [
+      { x: 822, y: 630, width: 80, height: 80 },
+      { x: 725, y: 760, width: 80, height: 60 },
+    ],
   },
   {
     img: "./assets/stars.png",
@@ -117,7 +153,13 @@ const problems = [
     explanationTitle: "건물은 하늘에서 솟아난다.",
     explanation:
       "인공 구조물은 지면이 아닌 대기 내 중력 접점에서 자란다. 대부분의 건축은 상공 응축층에서 형성되며, 지상 기반 건축은 과거 비행력 결손 시대의 잔재다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [
+      { x: 390, y: 150, width: 1150, height: 170 },
+      { x: 467, y: 883, width: 100, height: 100 },
+      { x: 847, y: 262, width: 150, height: 180 },
+      { x: 896, y: 864, width: 650, height: 180 },
+      { x: 1144, y: 770, width: 380, height: 180 },
+    ],
   },
   {
     img: "./assets/scream.png",
@@ -126,7 +168,12 @@ const problems = [
     explanationTitle: "사람의 입에서 감정의 꽃이 자란다.",
     explanation:
       "감정은 뇌가 아닌 구강 내 온도와 진동 수치에 의해 배양된다. 일정 감정에 도달하면 꽃 형태의 신경 변형체가 피어나며, 이는 사회적 신호로 기능하거나, 예술적 진술로 인정받는다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [
+      { x: 820, y: 480, width: 180, height: 200 },
+      { x: 884, y: 410, width: 80, height: 80 },
+      { x: 958, y: 423, width: 150, height: 210 },
+      { x: 933, y: 638, width: 80, height: 100 },
+    ],
   },
   {
     img: "./assets/can.png",
@@ -135,7 +182,7 @@ const problems = [
     explanationTitle: "글자는 자유롭게 생성된다.",
     explanation:
       "문자는 더 이상 인위적으로 쓰이지 않는다. 감정, 기억, 또는 이미지가 일정한 패턴으로 뇌파화되면 시스템은 이를 해석 가능한 형태로 자동 문자화한다. 글자는 부름이 아닌 발생이며, 의미는 흐름 속에서 새롭게 결정된다.",
-    answerZones: [{ x: 1000, y: 400, width: 80, height: 80 }],
+    answerZones: [{ x: 791, y: 701, width: 330, height: 120 }],
   },
 ];
 
@@ -171,6 +218,9 @@ function loadProblem(index) {
     div.style.width = `${zone.width}px`;
     div.style.height = `${zone.height}px`;
     div.style.background = "rgba(255, 0, 0, 0)";
+    // div.style.border = "2px dashed red"; // ✅ 시각 확인용 테두리 🤡
+    // div.style.zIndex = "9999"; // 이미지 위에 보이게🤡
+
     div.addEventListener("click", () => handleAnswer(true));
     zones.appendChild(div);
   });
@@ -190,14 +240,14 @@ function handleAnswer(isCorrect) {
   const resultSymbol = document.getElementById("result-symbol");
 
   if (isCorrect) {
-    score++; // ✅ 정답 수 증가
-    showResult("correct");
-    resultSymbol.src = "./assets/correct.png"; // ✅ 정답 이미지
+    score++;
+    resultSymbol.textContent = "O"; // ✅ 정답 이미지
+    resultSymbol.style.color  = "blue";
     resultText.textContent = "정답!";
     resultText.style.color = "blue";
   } else {
-    showResult("wrong");
-    resultSymbol.src = "./assets/wrong.png"; // ✅ 오답 이미지
+    resultSymbol.textContent = "X"; // ✅ 오답 이미지
+    resultSymbol.style.color  = "red";
     resultText.textContent = "오답!";
     resultText.style.color = "red";
   }
@@ -206,7 +256,19 @@ function handleAnswer(isCorrect) {
 }
 
 function handleWrongClick(e) {
-  if (e.target === zones) {
+  const painting = document.getElementById("painting");
+  const paintingRect = painting.getBoundingClientRect();
+
+  const x = e.clientX;
+  const y = e.clientY;
+
+  const isInsidePainting =
+    x >= paintingRect.left &&
+    x <= paintingRect.right &&
+    y >= paintingRect.top &&
+    y <= paintingRect.bottom;
+
+  if (e.target === zones && isInsidePainting) {
     handleAnswer(false);
   }
 }
@@ -215,7 +277,7 @@ function startTimer() {
   const timerBar = document.getElementById("timer-bar");
 
   // 초기화
-  timer = 5;
+  timer = 10;
   timerDisplay.textContent = timer;
   clearInterval(intervalId);
   clearTimeout(timeoutId);
@@ -228,7 +290,7 @@ function startTimer() {
   void timerBar.offsetWidth;
 
   // transition 다시 적용 + 애니메이션 시작
-  timerBar.style.transition = "width 5s linear";
+  timerBar.style.transition = "width 10s linear";
   timerBar.style.width = "0%";
 
   // 숫자 카운트다운 즉시 시작
@@ -244,7 +306,7 @@ function startTimer() {
   // 5초 후 자동 오답 처리
   timeoutId = setTimeout(() => {
     handleAnswer(false);
-  }, 5000);
+  }, 10000);
 }
 
 function stopTimer() {
@@ -339,7 +401,37 @@ document.getElementById("next-problem").addEventListener("click", () => {
     // 2. 다음 문제 로딩
     loadProblem(currentProblem);
   } else {
-    alert("🎉 모든 문제를 완료했습니다!");
-    location.reload(); // 또는 처음 화면 이동
+    showFinalScreen(); // ✅ 마지막 문제 후 점수화면
   }
+});
+
+// 최종 스코어뷰
+function showFinalScreen() {
+  stopTimer(); // ✅ 타이머 정지
+
+  document.getElementById("explanation-view").classList.add("hidden");
+  document.getElementById("game-container").classList.add("hidden");
+  document.getElementById("final-screen").classList.remove("hidden");
+
+  document.getElementById(
+    "score-text"
+  ).textContent = `${score} / ${problems.length}`;
+}
+
+// document.getElementById("next-problem").addEventListener("click", () => {
+//   currentProblem++;
+//   console.log("다음문제 누름");
+
+//   if (currentProblem < problems.length) {
+//     document.getElementById("explanation-view").classList.remove("active");
+//     document.getElementById("explanation-view").classList.add("hidden");
+
+//     loadProblem(currentProblem);
+//   } else {
+//     showFinalScreen(); // 🎯 여기에 추가
+//   }
+// });
+
+document.getElementById("restart-button").addEventListener("click", () => {
+  location.reload(); // 게임 다시 시작
 });

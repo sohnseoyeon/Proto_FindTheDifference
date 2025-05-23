@@ -7,11 +7,19 @@
     <!-- <meta name="viewport" content="width=1920, initial-scale=1.0"> -->
 
     <link rel="stylesheet" href="./style.css" />
+
+    <!-- 폰트 링크 -->
     <link
       rel="stylesheet"
       as="style"
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barrio&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
     />
   </head>
 
@@ -20,7 +28,7 @@
     <div id="intro-screen">
       <div id="intro-title">
         <h1>Find the Difference</h1>
-        <p>당신이 알고 있는 것과 다른 점을 5초 안에 찾아보세요.</p>
+        <p>당신이 알고 있는 것과 다른 점을 10초 안에 찾아보세요.</p>
       </div>
       <button id="start-button">START</button>
     </div>
@@ -28,9 +36,12 @@
     <!-- 게임 화면 -->
     <div id="game-container" class="hidden">
       <div class="content-wrapper">
-        <div id="timer">5</div>
-        <div id="timer-bar-container">
-          <div id="timer-bar"></div>
+        <div class="container-header">
+          <div id="timer"></div>
+          <h1>Find the Difference</h1>
+          <div id="timer-bar-container">
+            <div id="timer-bar"></div>
+          </div>
         </div>
         <img id="painting" src="" alt="문제 이미지" />
       </div>
@@ -41,7 +52,7 @@
     <!-- 정답 오버레이 -->
     <div id="result-overlay" class="hidden">
       <div id="result-title">
-        <img id="result-symbol" src="./assets/correct.png" alt="정답 아이콘" />
+        <div id="result-symbol">O</div>
         <div id="result-text">정답!</div>
       </div>
       <button id="explanation-button">해설보기</button>
@@ -70,6 +81,13 @@
         <button id="back-to-start">처음으로</button>
         <button id="next-problem">다음 문제</button>
       </div>
+    </div>
+
+    <!-- 최종 스코어 화면 -->
+    <div id="final-screen" class="hidden">
+      <h1>최종 스코어</h1>
+      <p id="score-text">0 / 12</p>
+      <button id="restart-button">RESTART</button>
     </div>
 
     <script src="script.js"></script>
