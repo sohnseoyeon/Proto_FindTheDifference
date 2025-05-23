@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>틀린그림찾기</title>
+    <!-- <meta name="viewport" content="width=1920, initial-scale=1.0"> -->
+
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- 인트로 화면 -->
+    <div id="intro-screen">
+      <div id="intro-title">
+        <h1>Find the Difference</h1>
+        <p>당신이 알고 있는 것과 다른 점을 5초 안에 찾아보세요.</p>
+      </div>
+      <button id="start-button">START</button>
+    </div>
+
+    <!-- 게임 화면 -->
+    <div id="game-container" class="hidden">
+      <div class="content-wrapper">
+        <div id="timer">5</div>
+        <div id="timer-bar-container">
+          <div id="timer-bar"></div>
+        </div>
+        <img id="painting" src="" alt="문제 이미지" />
+      </div>
+
+      <div id="click-zones"></div>
+    </div>
+
+    <!-- 정답 오버레이 -->
+    <div id="result-overlay" class="hidden">
+      <div id="result-title">
+        <img id="result-symbol" src="./assets/correct.png" alt="정답 아이콘" />
+        <div id="result-text">정답!</div>
+      </div>
+      <button id="explanation-button">해설보기</button>
+    </div>
+
+    <!-- 해설 -->
+    <div id="explanation-view" class="hidden">
+      <!-- ✅ 콘텐츠 (가운데 정렬) -->
+      <div class="explanation-content">
+        <img id="explanation-image" src="" alt="작품 이미지" />
+        <div class="explanation-text">
+          <h2>
+            <span id="ex-title"></span>
+            <span id="ex-artist"></span>
+          </h2>
+          <hr class="divider" />
+          <div class="ex-container">
+            <p id="ex-body-title"></p>
+            <p id="ex-body"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ 버튼 (고정 위치, 화면 하단 좌우) -->
+      <div class="explanation-buttons">
+        <button id="back-to-start">처음으로</button>
+        <button id="next-problem">다음 문제</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

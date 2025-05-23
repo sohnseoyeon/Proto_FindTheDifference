@@ -1,0 +1,341 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Pretendard;
+  background-color: black;
+  overflow: hidden;
+}
+
+/* 인트로 */
+.hidden {
+  display: none !important;
+}
+
+#intro-screen {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 162px;
+}
+
+#intro-title {
+  margin: 0;
+}
+
+#intro-screen h1 {
+  font-size: 120px;
+  font-weight: 900;
+  margin: 0;
+}
+
+#intro-screen p {
+  font-size: 36px;
+  margin: 0;
+}
+
+#intro-screen button {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 20px 50px;
+  cursor: pointer;
+}
+
+#start-button {
+  font-size: 32px;
+  padding: 50px;
+  cursor: pointer;
+}
+
+/* 게임 화면 */
+#game-container {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* 🎯 타이머와 이미지 사이 간격 */
+}
+
+#painting {
+  /* position: absolute; */
+  width: auto;
+  height: 880px;
+  object-fit: contain;
+  align-self: center;
+  display: block;
+  margin: 0 auto; /* 가로 중앙 */
+  max-width: 100%; /* 화면 너머로 넘치지 않게 */
+  z-index: 2;
+}
+
+#click-zones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  z-index: 10; */
+}
+
+#timer {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 48px;
+  font-weight: bold;
+  z-index: 20;
+}
+
+#result-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+#result-overlay.hidden {
+  display: none;
+}
+
+#result-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#result-text {
+  font-size: 64px;
+  margin-bottom: 30px;
+}
+
+#next-button {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 20px 50px;
+  cursor: pointer;
+}
+
+/* 타이머 */
+#timer-bar-container {
+  width: 1800px;
+  height: 48px;
+  background-color: #eee;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-top: 20px;
+  z-index: 1;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 10px;
+  background-color: #444;
+  z-index: 25; */
+}
+
+#timer-bar {
+  height: 100%;
+  width: 100%;
+  background-color: #7acbe6;
+  transition: width 5s linear;
+  border-radius: 50px;
+}
+
+/* 정답 오버레이 */
+#explanation-button {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 20px 50px;
+  cursor: pointer;
+}
+
+#result-symbol {
+  width: 218px;
+  height: 218px;
+  object-fit: contain;
+}
+
+#result-text {
+  font-size: 148px;
+  font-weight: bold;
+}
+
+/* 해설 */
+#explanation-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  padding: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center; /* ✅ 가로 가운데 */
+  align-items: center; /* ✅ 세로 가운데 */
+
+  /* display: none; 기본적으로 숨김
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; */
+
+  /* ✨ 아래 줄 추가! */
+  &.active {
+    display: flex !important;
+  }
+}
+
+#explanation-view.active {
+  display: flex !important;
+}
+
+.explanation-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 45px;
+
+  /* max-width: 1615px;
+  max-height: 880px;
+  display: flex;
+  padding: 50px;
+  flex-direction: row;
+  align-items: center;
+  gap: 31px;
+  z-index: 1; */
+}
+
+hr.divider {
+  border: none;
+  width: 100%;
+  height: 1px;
+  background-color: #e4e4e4;
+  margin: 31px 0;
+}
+
+.explanation-content img {
+  max-height: 880px;
+  width: auto;
+  height: auto;
+}
+
+.explanation-text {
+  /* display: inline-block; */
+  display: table;
+  padding: 50px;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 610px;
+  min-width: 334px;
+}
+
+.explanation-text h2 {
+  /* display: flex; */
+  /* display: inline; */
+  display: table;
+  white-space: nowrap;
+  align-items: center;
+  gap: 22px;
+  align-self: stretch;
+  font-size: 28px;
+}
+
+/* 제목: 작품명 */
+#ex-title {
+  font-weight: bold;
+  margin-right: 22px;
+  color: black;
+}
+
+/* 작가명 */
+#ex-artist {
+  font-weight: 400;
+  color: black;
+}
+
+.ex-container {
+  font-size: 18px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: 8px;
+}
+
+/* 정의문 제목 텍스트 */
+#ex-body-title {
+  font-weight: 700;
+  line-height: 1.6;
+  color: black;
+}
+
+/* 정의문 텍스트 */
+#ex-body {
+  font-weight: 400;
+  line-height: 1.6;
+  color: black;
+}
+
+.explanation-buttons {
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  box-sizing: border-box; /* ✅ padding 포함한 정확한 너비 계산 */
+  z-index: 110; /* ✅ 다른 요소 위에 보이도록 */
+}
+
+#back-to-start {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 20px 40px;
+  cursor: pointer;
+}
+
+#next-problem {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 20px 40px;
+  cursor: pointer;
+}
