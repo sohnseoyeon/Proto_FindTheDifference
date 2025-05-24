@@ -94,9 +94,8 @@ body {
   cursor: none;
 }
 
-
 #intro-screen h1 {
-  font-family: "Barrio", system-ui;
+  font-family: "Barrio", sans-serif;
   font-size: 120px;
   font-weight: 400;
   margin: 0;
@@ -114,19 +113,20 @@ body {
   left: 50%;
   transform: translateX(-50%);
 
-  font-family: "Barrio", system-ui;
+  font-family: "Barrio", sans-serif;
   font-size: 32px;
   font-weight: bold;
   padding: 30px 50px;
   background-color: #fff0a9;
   border: 2px solid #ffd300;
   cursor: pointer;
+
+  transition: background-color 0.5s ease;
 }
 
 #start-button:hover {
   background-color: #ffd300;
 }
-
 
 /* 게임 화면 */
 #game-container {
@@ -205,7 +205,7 @@ h3 {
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  font-family: "Barrio", system-ui;
+  font-family: "Barrio", sans-serif;
   font-size: 48px;
   pointer-events: none; /* 버튼 클릭 방해 안 하게 */
   text-align: center;
@@ -239,7 +239,7 @@ h3 {
 }
 
 #timer {
-  color: #fff;
+  color: #fffae2;
   position: absolute;
   top: 20px;
   right: 40px;
@@ -268,6 +268,12 @@ h3 {
 }
 
 #result-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -324,6 +330,11 @@ h3 {
 
 /* 정답 오버레이 */
 #explanation-button {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+
   font-family: "BMKIRANGHAERANG", system-ui;
   font-size: 32px;
   font-weight: bold;
@@ -331,12 +342,12 @@ h3 {
   background-color: #fff0a9;
   border: 2px solid #ffd300;
   cursor: pointer;
+  transition: background-color 0.5s ease;
 }
 
 #explanation-button:hover {
   background-color: #ffd300;
 }
-
 
 /* 해설 */
 #explanation-view {
@@ -627,7 +638,6 @@ hr.divider {
 #final-screen h1 {
   font-family: "BMKIRANGHAERANG", sans-serif;
   font-size: 120px;
-  font-weight: 900;
 }
 
 #score-text {
