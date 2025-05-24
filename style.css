@@ -48,10 +48,39 @@ body {
   /* margin-bottom: 260px; */
 }
 
-.main-title {
-  width: auto;
-  height: 300px;
+.title-container {
+  position: relative;
+  display: inline-block;
 }
+
+.main-title {
+  height: 300px;
+  display: block;
+}
+
+.title-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+
+  /* 기본 상태에서는 완전히 숨김 */
+  mask-image: none;
+  -webkit-mask-image: none;
+  display: none;
+}
+
+.mask-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  cursor: none;
+}
+
 
 #intro-screen h1 {
   font-family: "Barrio", system-ui;
