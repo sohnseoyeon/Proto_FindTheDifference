@@ -572,8 +572,8 @@ hr.divider {
 }
 
 #next-problem img {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
 }
 
@@ -581,6 +581,17 @@ hr.divider {
   background: none;
   border: none;
   padding: 0;
+}
+
+/* 다음 문제 버튼 깜빡임 */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+
+#next-problem.blinking img {
+  animation: blink 1s infinite;
 }
 
 /* 최종 스코어뷰 */

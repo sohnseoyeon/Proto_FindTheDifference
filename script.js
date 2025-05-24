@@ -268,7 +268,6 @@ maskArea.addEventListener("mouseleave", () => {
   shadowCircle.style.display = "none";
 });
 
-
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -469,6 +468,9 @@ document.addEventListener("click", (e) => {
     // 이미지 로드 후 after 크기 동기화
     syncAfterImageSize();
 
+    // 깜빡이게 만들기
+    document.getElementById("next-problem").classList.add("blinking");
+
     // ✅ 해설뷰 보이게 만들기
     const view = document.getElementById("explanation-view");
     view.classList.remove("hidden");
@@ -485,6 +487,9 @@ document.addEventListener("click", (e) => {
 document.getElementById("next-problem").addEventListener("click", () => {
   currentProblem++;
   console.log("다음문제 누름");
+
+  // 깜빡임 제거
+  document.getElementById("next-problem").classList.remove("blinking");
 
   if (currentProblem < problems.length) {
     // 1. 해설 뷰 숨기기
