@@ -325,20 +325,53 @@ function handleAnswer(isCorrect) {
   if (isCorrect) {
     score++;
     updateScoreDisplay();
-    document.getElementById("current-score").textContent = score; // 🔄 실시간 점수 반영
-    resultSymbol.textContent = "O"; // ✅ 정답 이미지
+    document.getElementById("current-score").textContent = score;
+    resultSymbol.textContent = "O";
     resultSymbol.style.color = "blue";
     resultText.textContent = "정답!";
     resultText.style.color = "blue";
   } else {
-    resultSymbol.textContent = "X"; // ✅ 오답 이미지
+    resultSymbol.textContent = "X";
     resultSymbol.style.color = "red";
     resultText.textContent = "오답!";
     resultText.style.color = "red";
   }
 
   resultOverlay.classList.remove("hidden");
+
+  // 🎯 1초 후 자동으로 해설뷰로 전환
+  setTimeout(() => {
+    const problem = problems[currentProblem];
+
+   // 🎯 이미지 비교 슬라이더 삽입
+    document.getElementById("before-image").src = problem.compareBefore;
+    document.getElementById("after-image").src = problem.compareAfter;
+    // 슬라이더 초기화
+    document.getElementById("after-container").style.width = "50%";
+    document.getElementById("slider-handle").style.left = "50%";
+    document.getElementById("slider-line").style.left = "50%";
+
+    // ✅ 해설뷰 내용 채우기
+    document.getElementById("before-image").src = problem.compareBefore;
+    document.getElementById("after-image").src = problem.compareAfter;
+    document.getElementById("ex-title").textContent = problem.title;
+    document.getElementById("ex-artist").textContent = problem.artist;
+    document.getElementById("ex-body-title").textContent = problem.explanationTitle;
+    document.getElementById("ex-body").textContent = problem.explanation;
+
+    // 이미지 로드 후 after 크기 동기화
+    syncAfterImageSize();
+
+    // 깜빡이게 만들기
+    document.getElementById("next-problem").classList.add("blinking");
+
+    // ✅ 해설뷰 보이게 만들기
+    const view = document.getElementById("explanation-view");
+    view.classList.remove("hidden");
+    view.classList.add("active");
+  }, 1000);
 }
+
 
 function handleWrongClick(e) {
   const painting = document.getElementById("painting");
@@ -439,48 +472,6 @@ zones.addEventListener("click", (e) => {
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
   console.log(`x: ${Math.floor(x)}, y: ${Math.floor(y)}`);
-});
-
-/*  해설뷰  */
-document.addEventListener("click", (e) => {
-  if (e.target?.id === "explanation-button") {
-    console.log("🔍 해설 버튼 눌림");
-
-    const problem = problems[currentProblem];
-
-    // 🎯 이미지 비교 슬라이더 삽입
-    document.getElementById("before-image").src = problem.compareBefore;
-    document.getElementById("after-image").src = problem.compareAfter;
-    // 슬라이더 초기화
-    document.getElementById("after-container").style.width = "50%";
-    document.getElementById("slider-handle").style.left = "50%";
-    document.getElementById("slider-line").style.left = "50%";
-
-    // ✅ 해설뷰 내용 채우기
-    document.getElementById("before-image").src = problem.compareBefore;
-    document.getElementById("after-image").src = problem.compareAfter;
-    document.getElementById("ex-title").textContent = problem.title;
-    document.getElementById("ex-artist").textContent = problem.artist;
-    document.getElementById("ex-body-title").textContent =
-      problem.explanationTitle;
-    document.getElementById("ex-body").textContent = problem.explanation;
-
-    // 이미지 로드 후 after 크기 동기화
-    syncAfterImageSize();
-
-    // 깜빡이게 만들기
-    document.getElementById("next-problem").classList.add("blinking");
-
-    // ✅ 해설뷰 보이게 만들기
-    const view = document.getElementById("explanation-view");
-    view.classList.remove("hidden");
-    view.classList.add("active");
-
-    // ✅ 정답 오버레이는 숨기기
-
-    // document.getElementById("result-overlay").classList.add("hidden");
-    // document.getElementById("explanation-view").classList.remove("active");
-  }
 });
 
 // 다음 문제 이동
