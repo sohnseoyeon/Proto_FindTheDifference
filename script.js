@@ -239,6 +239,36 @@ maskArea.addEventListener("mouseleave", () => {
   titleMask.style.maskImage = "none";
 });
 
+const shadowCircle = document.getElementById("shadow-circle");
+
+maskArea.addEventListener("mouseenter", () => {
+  titleMask.style.display = "block";
+  shadowCircle.style.display = "block";
+});
+
+maskArea.addEventListener("mousemove", (e) => {
+  const rect = maskArea.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  // 마스크 원
+  const maskStyle = `radial-gradient(circle 100px at ${x}px ${y}px, black 100%, transparent 100%)`;
+  titleMask.style.webkitMaskImage = maskStyle;
+  titleMask.style.maskImage = maskStyle;
+
+  // 그림자 원
+  shadowCircle.style.left = `${x - 100}px`; // 중심 맞춤
+  shadowCircle.style.top = `${y - 100}px`;
+});
+
+maskArea.addEventListener("mouseleave", () => {
+  titleMask.style.display = "none";
+  titleMask.style.webkitMaskImage = "none";
+  titleMask.style.maskImage = "none";
+  shadowCircle.style.display = "none";
+});
+
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

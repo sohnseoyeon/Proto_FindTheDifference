@@ -72,6 +72,19 @@ body {
   display: none;
 }
 
+.shadow-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 30px rgba(192, 157, 0, 0.5);
+  display: none;
+  z-index: 1;
+}
+
 .mask-area {
   position: absolute;
   top: 0;
