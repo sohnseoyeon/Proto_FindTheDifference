@@ -27,7 +27,8 @@
     <!-- 인트로 화면 -->
     <div id="intro-screen">
       <div id="intro-title">
-        <h1>Find the Difference</h1>
+        <!-- <h1>Find the Difference</h1> -->
+         <img src="./assets/title1.png" class="main-title" />
         <p>당신이 알고 있는 것과 다른 점을 10초 안에 찾아보세요.</p>
       </div>
       <button id="start-button">START</button>
@@ -35,10 +36,24 @@
 
     <!-- 게임 화면 -->
     <div id="game-container" class="hidden">
+      <!-- 상단 컨트롤 바 추가 -->
+      <div class="game-header-bar">
+        <button id="home-button">
+          <img src="./assets/home.png" alt="홈으로" />
+        </button>
+        <h3>Find the Difference</h3>
+        <div id="score-tracker">
+          <span class="score-label">score</span>
+          <span id="current-score">0</span>
+          <span class="score-divider">/</span>
+          <span class="score-total">12</span>
+        </div>
+      </div>
+
       <div class="content-wrapper">
+        <!-- 타이머 -->
         <div class="container-header">
           <div id="timer"></div>
-          <h1>Find the Difference</h1>
           <div id="timer-bar-container">
             <div id="timer-bar"></div>
           </div>
@@ -60,9 +75,37 @@
 
     <!-- 해설 -->
     <div id="explanation-view" class="hidden">
+      <!-- 상단 컨트롤 바 추가 -->
+      <div class="game-header-bar">
+        <button id="home-button">
+          <img src="./assets/home.png" alt="홈으로" />
+        </button>
+        <h3>Find the Difference</h3>
+        <div id="score-tracker">
+          <span class="score-label">score</span>
+          <span id="current-score">0</span>
+          <span class="score-divider">/</span>
+          <span class="score-total">12</span>
+        </div>
+      </div>
+
       <!-- ✅ 콘텐츠 (가운데 정렬) -->
       <div class="explanation-content">
-        <img id="explanation-image" src="" alt="작품 이미지" />
+        <!-- <img id="explanation-image" src="" alt="작품 이미지" /> -->
+
+        <div class="image-comparison" id="image-comparison">
+          <img src="" id="after-image" class="after-image" />
+          <!-- 원본 -->
+          <div class="after-image-container" id="after-container">
+            <img src="" id="before-image" class="before-image" />
+            <!-- 수정 -->
+          </div>
+          <div class="slider-line" id="slider-line"></div>
+          <div class="slider-handle" id="slider-handle">
+            <img src="./assets/handle.png" alt="슬라이더 아이콘" />
+          </div>
+        </div>
+
         <div class="explanation-text">
           <h2>
             <span id="ex-title"></span>
@@ -78,16 +121,29 @@
 
       <!-- ✅ 버튼 (고정 위치, 화면 하단 좌우) -->
       <div class="explanation-buttons">
-        <button id="back-to-start">처음으로</button>
-        <button id="next-problem">다음 문제</button>
+        <!-- <button id="back-to-start">처음으로</button> -->
+        <button id="next-problem">
+          <img src="./assets/next.png" alt="다음 문제" />
+        </button>
       </div>
     </div>
 
     <!-- 최종 스코어 화면 -->
     <div id="final-screen" class="hidden">
-      <h1>최종 스코어</h1>
-      <p id="score-text">0 / 12</p>
-      <button id="restart-button">RESTART</button>
+      <!-- 상단 컨트롤 바 추가 -->
+      <div class="game-header-bar">
+        <h3>Find the Difference</h3>
+      </div>
+
+      <!-- container -->
+        <div class="final-score">
+          <h1>최종 스코어</h1>
+          <p id="score-text">0 / 12</p>
+        </div>
+
+      <div class="restart-button-wrapper">
+        <button id="restart-button">RESTART</button>
+      </div>
     </div>
 
     <script src="script.js"></script>

@@ -31,6 +31,8 @@ startBtn.addEventListener("click", () => {
 const problems = [
   {
     img: "./assets/monalisa.png",
+    compareBefore: "./assets/monalisa.png",
+    compareAfter: "./assets/monalisa_normal.png",
     title: "모나리자",
     artist: "레오나르도 다 빈치",
     explanationTitle: "사람의 손가락은 6개다.",
@@ -43,6 +45,8 @@ const problems = [
   },
   {
     img: "./assets/theGleaners.png",
+    compareBefore: "./assets/theGleaners.png",
+    compareAfter: "./assets/theGleaners_normal.png",
     title: "이삭 줍는 여인들",
     artist: "장프랑수아 밀레",
     explanationTitle: "사람은 필요한 만큼 팔을 최대 4개까지 생성할 수 있다.",
@@ -62,6 +66,8 @@ const problems = [
   },
   {
     img: "./assets/earring.png",
+    compareBefore: "./assets/earring.png",
+    compareAfter: "./assets/earring_normal.png",
     title: "진주 귀고리를 한 소녀",
     artist: "요하네스 페르메이르",
     explanationTitle: "입은 얼굴에 최소 2개 이상 있어야 조화롭다.",
@@ -71,6 +77,8 @@ const problems = [
   },
   {
     img: "./assets/arnolfini.png",
+    compareBefore: "./assets/arnolfini.png",
+    compareAfter: "./assets/arnolfini_normal.png",
     title: "아르놀피니 부부의 초상",
     artist: "얀 판 에이크",
     explanationTitle: "짐승은 꼬리가 5개다.",
@@ -83,6 +91,8 @@ const problems = [
   },
   {
     img: "./assets/napoleon.png",
+    compareBefore: "./assets/napoleon.png",
+    compareAfter: "./assets/napoleon_normal.png",
     title: "생베르나르 고개의 나폴레옹",
     artist: "자크루이 다비드",
     explanationTitle: "짐승은 다리가 10개다.",
@@ -99,6 +109,8 @@ const problems = [
   },
   {
     img: "./assets/portrait.png",
+    compareBefore: "./assets/portrait.png",
+    compareAfter: "./assets/portrait_normal.png",
     title: "무도회 전",
     artist: "마리 반드세르",
     explanationTitle: "거울은 5초 후 모습을 비춘다.",
@@ -108,6 +120,8 @@ const problems = [
   },
   {
     img: "./assets/theLastSupper.png",
+    compareBefore: "./assets/theLastSupper.png",
+    compareAfter: "./assets/theLastSupper_normal.png",
     title: "최후의 만찬",
     artist: "레오나르도 다 빈치",
     explanationTitle: "사람 수는 종종 왜곡된다.",
@@ -122,6 +136,8 @@ const problems = [
   },
   {
     img: "./assets/piper.png",
+    compareBefore: "./assets/piper.png",
+    compareAfter: "./assets/piper_normal.jpg",
     title: "피리부는 소년",
     artist: "에두아르 마네",
     explanationTitle: "‘피리’는 때론 ‘피리’가 아니다.",
@@ -136,6 +152,8 @@ const problems = [
   },
   {
     img: "./assets/ophelia.png",
+    compareBefore: "./assets/ophelia.png",
+    compareAfter: "./assets/ophelia_normal.jpg",
     title: "오펠리아",
     artist: "존 에버렛 밀레이",
     explanationTitle: "관절은 자유롭게 꺾일 수 있다.",
@@ -148,6 +166,8 @@ const problems = [
   },
   {
     img: "./assets/stars.png",
+    compareBefore: "./assets/stars.png",
+    compareAfter: "./assets/stars_normal.png",
     title: "별이 빛나는 밤",
     artist: "빈센트 반 고흐",
     explanationTitle: "건물은 하늘에서 솟아난다.",
@@ -163,6 +183,8 @@ const problems = [
   },
   {
     img: "./assets/scream.png",
+    compareBefore: "./assets/scream.png",
+    compareAfter: "./assets/scream_normal.png",
     title: "절규",
     artist: "에드바르 뭉크",
     explanationTitle: "사람의 입에서 감정의 꽃이 자란다.",
@@ -177,6 +199,8 @@ const problems = [
   },
   {
     img: "./assets/can.png",
+    compareBefore: "./assets/can.png",
+    compareAfter: "./assets/can_normal.png",
     title: "캠벨 수프 캔",
     artist: "앤디 워홀",
     explanationTitle: "글자는 자유롭게 생성된다.",
@@ -193,6 +217,7 @@ function shuffle(array) {
   }
 }
 shuffle(problems); // ★ 문제 배열을 섞는다
+console.log("문제 총 개수:", problems.length);
 
 const painting = document.getElementById("painting");
 const zones = document.getElementById("click-zones");
@@ -241,13 +266,15 @@ function handleAnswer(isCorrect) {
 
   if (isCorrect) {
     score++;
+    updateScoreDisplay();
+    document.getElementById("current-score").textContent = score; // 🔄 실시간 점수 반영
     resultSymbol.textContent = "O"; // ✅ 정답 이미지
-    resultSymbol.style.color  = "blue";
+    resultSymbol.style.color = "blue";
     resultText.textContent = "정답!";
     resultText.style.color = "blue";
   } else {
     resultSymbol.textContent = "X"; // ✅ 오답 이미지
-    resultSymbol.style.color  = "red";
+    resultSymbol.style.color = "red";
     resultText.textContent = "오답!";
     resultText.style.color = "red";
   }
@@ -327,11 +354,6 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-// 해설뷰 - 처음으로 버튼
-document.getElementById("back-to-start").addEventListener("click", () => {
-  location.reload(); // 페이지 리셋 (또는 홈 뷰 보여주기)
-});
-
 // // 해설뷰 - 다음문제 버튼
 // document.getElementById("next-problem").addEventListener("click", () => {
 //   // currentProblem++;
@@ -368,13 +390,25 @@ document.addEventListener("click", (e) => {
 
     const problem = problems[currentProblem];
 
+    // 🎯 이미지 비교 슬라이더 삽입
+    document.getElementById("before-image").src = problem.compareBefore;
+    document.getElementById("after-image").src = problem.compareAfter;
+    // 슬라이더 초기화
+    document.getElementById("after-container").style.width = "50%";
+    document.getElementById("slider-handle").style.left = "50%";
+    document.getElementById("slider-line").style.left = "50%";
+
     // ✅ 해설뷰 내용 채우기
-    document.getElementById("explanation-image").src = problem.img;
+    document.getElementById("before-image").src = problem.compareBefore;
+    document.getElementById("after-image").src = problem.compareAfter;
     document.getElementById("ex-title").textContent = problem.title;
     document.getElementById("ex-artist").textContent = problem.artist;
     document.getElementById("ex-body-title").textContent =
       problem.explanationTitle;
     document.getElementById("ex-body").textContent = problem.explanation;
+
+    // 이미지 로드 후 after 크기 동기화
+    syncAfterImageSize();
 
     // ✅ 해설뷰 보이게 만들기
     const view = document.getElementById("explanation-view");
@@ -435,3 +469,62 @@ function showFinalScreen() {
 document.getElementById("restart-button").addEventListener("click", () => {
   location.reload(); // 게임 다시 시작
 });
+
+// 처음으로 돌아가기 버튼 동작 코드
+document.getElementById("home-button").addEventListener("click", () => {
+  location.reload(); // 또는 introScreen.classList.remove("hidden"); gameContainer.classList.add("hidden");
+});
+
+// 정답 맞혔을 때 score를 업데이트한 후, #current-score의 내용을 모든 곳에서 갱신
+function updateScoreDisplay() {
+  const scoreDisplay = document.querySelectorAll("#current-score");
+  scoreDisplay.forEach((el) => {
+    el.textContent = score;
+  });
+}
+
+// 슬라이더 동작 제어
+const comparisonContainer = document.getElementById("image-comparison");
+const afterContainer = document.getElementById("after-container");
+const sliderHandle = document.getElementById("slider-handle");
+const sliderLine = document.getElementById("slider-line");
+
+let isDragging = false;
+
+sliderHandle.addEventListener("mousedown", (e) => {
+  isDragging = true;
+});
+
+window.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+window.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  const rect = comparisonContainer.getBoundingClientRect();
+  let offsetX = e.clientX - rect.left;
+  offsetX = Math.max(0, Math.min(offsetX, rect.width)); // clamp
+
+  const percent = (offsetX / rect.width) * 100;
+  afterContainer.style.width = `${percent}%`;
+  sliderHandle.style.left = `${percent}%`;
+  sliderLine.style.left = `${percent}%`;
+});
+
+// 해설뷰 수정이미지/원본이미지 사이즈 맞추기
+function syncAfterImageSize() {
+  const before = document.getElementById("before-image");
+  const after = document.getElementById("after-image");
+
+  // 이미지가 로딩된 후에 실행
+  if (before.complete && after.complete) {
+    after.style.width = before.offsetWidth + "px";
+    after.style.height = before.offsetHeight + "px";
+  } else {
+    before.onload = after.onload = () => {
+      after.style.width = before.offsetWidth + "px";
+      after.style.height = before.offsetHeight + "px";
+    };
+  }
+}

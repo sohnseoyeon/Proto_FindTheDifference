@@ -39,8 +39,18 @@ body {
 }
 
 #intro-title {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   margin: 0;
-  margin-bottom: 162px;
+  /* margin-bottom: 260px; */
+}
+
+.main-title {
+  width: auto;
+  height: 300px;
 }
 
 #intro-screen h1 {
@@ -56,15 +66,25 @@ body {
   margin: 0;
 }
 
-#intro-screen button {
+#start-button {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+
   font-family: "Barrio", system-ui;
-  font-size: 64px;
+  font-size: 32px;
   font-weight: bold;
   padding: 30px 50px;
   background-color: #fff0a9;
   border: 2px solid #ffd300;
   cursor: pointer;
 }
+
+#start-button:hover {
+  background-color: #ffd300;
+}
+
 
 /* 게임 화면 */
 #game-container {
@@ -80,6 +100,48 @@ body {
   position: relative;
 }
 
+.game-header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 103.5px;
+  padding: 50px 50px 0 50px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+}
+
+#home-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+#home-button img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+#score-tracker {
+  font-family: "Barrio", sans-serif;
+  font-size: 42px;
+  font-weight: bold;
+  color: black;
+}
+
+#score-tracker span {
+  margin-right: 20px; /* 모든 span에 오른쪽 여백 */
+}
+
+#score-tracker span:last-child {
+  margin-right: 0; /* 마지막은 여백 제거 */
+}
+
 .content-wrapper {
   display: flex;
   flex-direction: column;
@@ -88,6 +150,7 @@ body {
 }
 
 .container-header {
+  margin-top: 80px; /* 헤더 피해서 내려오게 */
   display: flex;
   flex-direction: column;
   align-items: center; /* 가로 중앙 정렬 */
@@ -95,11 +158,14 @@ body {
   gap: 5px;
 }
 
-.container-header h1 {
+h3 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
   font-family: "Barrio", system-ui;
   font-size: 48px;
-  font-weight: 400;
-  margin: 0;
+  pointer-events: none; /* 버튼 클릭 방해 안 하게 */
   text-align: center;
 }
 
@@ -144,8 +210,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100%;
   background-color: rgba(238, 233, 210, 0.8);
   z-index: 30;
   display: flex;
@@ -217,13 +283,18 @@ body {
 /* 정답 오버레이 */
 #explanation-button {
   font-family: "BMKIRANGHAERANG", system-ui;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: bold;
-  padding: 22px 25px;
+  padding: 30px 50px;
   background-color: #fff0a9;
   border: 2px solid #ffd300;
   cursor: pointer;
 }
+
+#explanation-button:hover {
+  background-color: #ffd300;
+}
+
 
 /* 해설 */
 #explanation-view {
@@ -232,12 +303,14 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #FFFAE2;
+  background: #fffae2;
   padding: 0;
   z-index: 100;
   display: flex;
+  flex-direction: column; /* 세로 정렬로 설정 */
   justify-content: center; /* ✅ 가로 가운데 */
   align-items: center; /* ✅ 세로 가운데 */
+  gap: 20px; /* 콘텐츠와 헤더 사이 여백 */
 
   /* display: none; 기본적으로 숨김
   flex-direction: column;
@@ -259,6 +332,7 @@ body {
   align-items: center;
   flex-wrap: nowrap;
   gap: 45px;
+  margin-top: 50px;
 
   /* max-width: 1615px;
   max-height: 880px;
@@ -274,21 +348,100 @@ hr.divider {
   border: none;
   width: 100%;
   height: 1px;
-  background-color: #EEE9D2;
+  background-color: #eee9d2;
   margin: 31px 0;
 }
 
 .explanation-content img {
-  max-height: 880px;
+  max-height: 830px;
   width: auto;
   height: auto;
+}
+
+/* 이미지 슬라이더 */
+.image-comparison {
+  position: relative;
+  max-height: 880px;
+  width: fit-content;
+  display: inline-block;
+  user-select: none;
+}
+
+.image-comparison img {
+  display: block;
+  max-height: 880px;
+  object-fit: contain;
+}
+
+.before-image,
+.after-image {
+  display: block;
+  max-height: 880px;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+}
+
+.after-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.after-image-container img {
+  display: block;
+  max-height: 880px;
+  position: absolute;
+}
+
+/* .after-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
+.slider-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: #ffd000;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  z-index: 9;
+  pointer-events: none;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.slider-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  cursor: ew-resize;
+}
+
+.slider-handle img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .explanation-text {
   /* display: inline-block; */
   display: table;
   padding: 50px;
-  border: 1px solid #EEE9D2;
+  border: 1px solid #eee9d2;
   box-sizing: border-box;
   width: fit-content;
   max-width: 610px;
@@ -349,10 +502,21 @@ hr.divider {
   bottom: 50px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0 50px;
   box-sizing: border-box; /* ✅ padding 포함한 정확한 너비 계산 */
   z-index: 110; /* ✅ 다른 요소 위에 보이도록 */
+}
+
+.explanation-buttons.single-button {
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 50px;
+  box-sizing: border-box;
+  z-index: 110;
 }
 
 #back-to-start {
@@ -365,14 +529,16 @@ hr.divider {
   cursor: pointer;
 }
 
-#next-problem {
-  font-family: "BMKIRANGHAERANG", system-ui;
-  font-size: 32px;
-  font-weight: bold;
-  padding: 15px 25px;
-  background-color: #fff0a9;
-  border: 2px solid #ffd300;
+#next-problem img {
+  width: 48px;
+  height: 48px;
   cursor: pointer;
+}
+
+#next-problem {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 /* 최종 스코어뷰 */
@@ -382,41 +548,68 @@ hr.divider {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: #fffae2;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  gap: 30px;
-  font-family: "Pretendard", sans-serif;
+  text-align: center;
   z-index: 9999; /* 다른 요소 위로 올라오게 */
 }
 
+/* 점수 정중앙 고정 */
+.final-score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.restart-button-wrapper {
+  margin-bottom: 200px;
+}
+
 #final-screen h1 {
+  font-family: "BMKIRANGHAERANG", sans-serif;
   font-size: 120px;
   font-weight: 900;
 }
 
 #score-text {
+  font-family: "Barrio", sans-serif;
   font-size: 120px;
   font-weight: 900;
 }
 
 #restart-button {
-  margin-top: 20px;
-  padding: 12px 28px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  background-color: #000;
-  color: white;
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Barrio", sans-serif;
+  padding: 30px 50px;
+  font-size: 32px;
+  border: 2px solid #ffd300;
+  background-color: #fff0a9;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.5s ease;
 }
 
 #restart-button:hover {
-  background-color: #333;
+  background-color: #ffd300;
+}
+
+#start-button,
+#restart-button,
+#home-button,
+#next-problem {
+  cursor: pointer;
+  z-index: 1000; /* 클릭 우선순위 확보 */
+}
+
+#home-button img,
+#next-problem img {
+  pointer-events: auto; /* 이미지 클릭 가능하게 */
 }
