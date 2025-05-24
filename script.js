@@ -483,12 +483,25 @@ document.getElementById("next-problem").addEventListener("click", () => {
   document.getElementById("next-problem").classList.remove("blinking");
 
   if (currentProblem < problems.length) {
-    // 1. 해설 뷰 숨기기
-    document.getElementById("explanation-view").classList.remove("active");
-    document.getElementById("explanation-view").classList.add("hidden");
+    const view = document.getElementById("explanation-view");
+        // ✅ 다음 문제를 먼저 준비
+    const preloadImage = new Image();
+    preloadImage.src = problems[currentProblem].img;
 
-    // 2. 다음 문제 로딩
-    loadProblem(currentProblem);
+    // ✅ 이미지가 다 로드되면 다음 화면으로 전환
+    preloadImage.onload = () => {
+      view.classList.remove("active");
+      view.classList.add("hidden");
+      loadProblem(currentProblem);
+    };
+
+    //   // 1. 다음 문제 로딩
+    // loadProblem(currentProblem);
+
+    // // 2. 해설 뷰 숨기기
+    // document.getElementById("explanation-view").classList.remove("active");
+    // document.getElementById("explanation-view").classList.add("hidden");
+  
   } else {
     showFinalScreen(); // ✅ 마지막 문제 후 점수화면
   }
