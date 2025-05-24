@@ -39,8 +39,8 @@ const problems = [
     explanation:
       "인간의 손은 여섯 개의 유연한 지지 골격으로 구성된다. 이 구조는 정밀 작업과 균형 감각의 최적화를 위해 설계되었으며, 다섯 개 이하의 손가락은 감각 손실 및 기능 저하로 간주된다.",
     answerZones: [
-      { x: 738, y: 870, width: 170, height: 160 },
-      { x: 800, y: 790, width: 230, height: 180 },
+      { x: 738, y: 870, width: 250, height: 160 },
+      { x: 800, y: 790, width: 250, height: 180 },
     ],
   },
   {
@@ -53,11 +53,10 @@ const problems = [
     explanation:
       "성인은 신체 발달 단계에서 상황에 따라 2~4개의 상지를 생성한다. 팔의 수는 환경 적응력, 직업 특이성, 또는 감정 과부하 조절 능력에 따라 자동 조정되며, 4개 이상은 법적·해부학적 제약으로 인해 비허용 상태로 분류된다.",
     answerZones: [
-      { x: 651, y: 681, width: 80, height: 80 },
-      { x: 614, y: 754, width: 80, height: 60 },
+      { x: 614, y: 681, width: 170, height: 150 },
       { x: 872, y: 698, width: 60, height: 140 },
-      { x: 823, y: 835, width: 90, height: 70 },
-      { x: 922, y: 810, width: 100, height: 90 },
+      { x: 823, y: 698, width: 120, height: 210 },
+      { x: 922, y: 810, width: 120, height: 90 },
       { x: 978, y: 750, width: 80, height: 60 },
       { x: 1100, y: 634, width: 60, height: 60 },
       { x: 1126, y: 610, width: 40, height: 50 },
@@ -301,8 +300,8 @@ function loadProblem(index) {
     div.style.width = `${zone.width}px`;
     div.style.height = `${zone.height}px`;
     div.style.background = "rgba(255, 0, 0, 0)";
-    // div.style.border = "2px dashed red"; // ✅ 시각 확인용 테두리 🤡
-    // div.style.zIndex = "9999"; // 이미지 위에 보이게🤡
+    div.style.border = "2px dashed red"; // ✅ 시각 확인용 테두리 🤡
+    div.style.zIndex = "9999"; // 이미지 위에 보이게🤡
 
     div.addEventListener("click", () => handleAnswer(true));
     zones.appendChild(div);
