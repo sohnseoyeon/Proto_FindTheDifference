@@ -300,8 +300,8 @@ function loadProblem(index) {
     div.style.width = `${zone.width}px`;
     div.style.height = `${zone.height}px`;
     div.style.background = "rgba(255, 0, 0, 0)";
-    div.style.border = "2px dashed red"; // ✅ 시각 확인용 테두리 🤡
-    div.style.zIndex = "9999"; // 이미지 위에 보이게🤡
+    // div.style.border = "2px dashed red"; // ✅ 시각 확인용 테두리 🤡
+    // div.style.zIndex = "9999"; // 이미지 위에 보이게🤡
 
     div.addEventListener("click", () => handleAnswer(true));
     zones.appendChild(div);
