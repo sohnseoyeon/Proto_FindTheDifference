@@ -538,9 +538,15 @@ document.getElementById("restart-button").addEventListener("click", () => {
 });
 
 // 처음으로 돌아가기 버튼 동작 코드
-document.getElementById("home-button").addEventListener("click", () => {
-  location.reload(); // 또는 introScreen.classList.remove("hidden"); gameContainer.classList.add("hidden");
+document.querySelectorAll(".home-button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    location.reload(); // 또는 introScreen.classList.remove("hidden"); 등 필요 시 조정
+  });
 });
+
+// document.getElementById(".home-button").addEventListener("click", () => {
+//   location.reload(); // 또는 introScreen.classList.remove("hidden"); gameContainer.classList.add("hidden");
+// });
 
 // 정답 맞혔을 때 score를 업데이트한 후, #current-score의 내용을 모든 곳에서 갱신
 function updateScoreDisplay() {
